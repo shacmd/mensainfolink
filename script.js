@@ -2,24 +2,16 @@ window.onload = function() {
     const foodItems = [
         {
             Name: 'Pizza',
-            Energy: 70,
-            Fat: 0.2,
-            UnsaturatedFat: 0.1,
-            Carbohydrates: 14,
-            Sugar: 10.4,
-            Protein: 0.3,
-            AllergenInfo: 'None'
+            Zutaten: ['Weizenmehl', 'Tomaten', 'Käse', 'Salami'],
+            Energie: 70,
+            Fett: 0.2,
+            Gesättige_Fettsäuren: 0.1,
+            Kohlenhydrate: 14,
+            Zucker: 10.4,
+            Eiweiß: 0.3,
+            AllergenInfo: 'Nicht Glutenfrei, Nicht für Vegetarier geeignet',
+            Tags: ['Enthält Fleisch'],
         },
-        {
-            Name: 'Baguette',
-            Energy: 50,
-            Fat: 0.3,
-            UnsaturatedFat: 0.1,
-            Carbohydrates: 27,
-            Sugar: 17.2,
-            Protein: 1.2,
-            AllergenInfo: 'Contains Gluten'
-        }
     ];
 
     const table = document.getElementById('foodInfo');
