@@ -99,6 +99,7 @@ select {
 .dish-head {
     position: relative;
     border-bottom: 2px solid black;
+    max-height: 200px;
 }
 
 .dish-head > img {
