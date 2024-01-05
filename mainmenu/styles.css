@@ -53,12 +53,9 @@ button {
     margin-right: 10px;
 }
 
-.firstLeft {
+.completeRight {
     margin-left: auto;
-}
-
-.secondLeft {
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 select {
