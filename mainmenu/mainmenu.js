@@ -1,10 +1,14 @@
 import * as data from "./data.js";
 
+let currentDayMeals = data.foodOnMonday;
+let language = "german";
 
 window.onload = function() {
     //Standart Einstellungen
-    updateDishes(data.foodOnMonday);
+    updateDishes();
     document.getElementById("btn_monday").style.border = "2px solid green";
+
+    document.getElementById("language").addEventListener("change", handleLanguageChange);
 
     // Event-Listener für jeden Button hinzufügen
     addWeekButtonClickListener("btn_monday", data.foodOnMonday);
@@ -17,25 +21,67 @@ window.onload = function() {
 };
 
 // Funktion zum Aktualisieren der Gerichte
-function updateDishes(listIDs) {
+function updateDishes() {
     let otherMeals = document.getElementById("otherMeals");
     otherMeals.innerHTML = '';
 
-    for (let id of listIDs) {
+    for (let id of currentDayMeals) {
         let foodItem = data.foodItems[id];
+        let description = language === "german" ? foodItem.description_de : foodItem.description_en;
         let dishHtml = `
             <div id="dish_${id}" class="dish">
                 <div class="dish-head">
                     <img src="${foodItem.image}" alt="${foodItem.name_en}">
                     <div class="price" id="dish_price_${id}">${foodItem.price.toFixed(2).replace('.',',')}€</div>
                 </div>
-                <div class="dish-description">
-                    ${foodItem.description_de}
-                </div>
             </div>
         `;
         otherMeals.innerHTML += dishHtml;
+        let dishDescriptionHtml = `
+            <div class="dish-description">
+                ${description}
+            </div>
+        `;
+        if(language !== "only-pictures") {
+            let dish = document.getElementById("dish_" + id);
+            dish.innerHTML += dishDescriptionHtml;
+        }
+
     }
+}
+
+function handleLanguageChange() {
+    language = document.getElementById("language").value;
+    if(language === "german") {
+        document.getElementById("btn_monday").innerText = "Mo";
+        document.getElementById("btn_tuesday").innerText = "Di";
+        document.getElementById("btn_wednesday").innerText = "Mi";
+        document.getElementById("btn_thursday").innerText = "Do";
+        document.getElementById("btn_friday").innerText = "Fr";
+        document.getElementById("btn_saturday").innerText = "Sa";
+        document.getElementById("btn_mondayNextWeek").innerText = "Mo";
+
+        document.getElementById("weekOverview").innerText = "Wochenübersicht";
+        document.getElementById("option_price").innerText = "Preis";
+        document.getElementById("option_popularity").innerText = "Beliebtheit";
+        document.getElementById("title_otherMeals").innerText = "Weitere Gerichte";
+        document.getElementById("title_preferredMeals").innerText = "Vorschläge für dich";
+    } else {
+        document.getElementById("btn_monday").innerText = "Mon";
+        document.getElementById("btn_tuesday").innerText = "Tue";
+        document.getElementById("btn_wednesday").innerText = "Wed";
+        document.getElementById("btn_thursday").innerText = "Thu";
+        document.getElementById("btn_friday").innerText = "Fri";
+        document.getElementById("btn_saturday").innerText = "Sat";
+        document.getElementById("btn_mondayNextWeek").innerText = "Mon";
+
+        document.getElementById("weekOverview").innerText = "Week overview";
+        document.getElementById("option_price").innerText = "Price";
+        document.getElementById("option_popularity").innerText = "Popularity";
+        document.getElementById("title_otherMeals").innerText = "Other meals";
+        document.getElementById("title_preferredMeals").innerText = "Suggestions for you";
+    }
+    updateDishes();
 }
 
 // Funktion zum Hinzufügen von Event-Listenern für die Week Buttons
@@ -43,7 +89,8 @@ function addWeekButtonClickListener(buttonId, foodData) {
     const button = document.getElementById(buttonId);
 
     button.addEventListener('click', function() {
-        updateDishes(foodData);
+        currentDayMeals = foodData;
+        updateDishes();
 
         // Alle Buttons zurücksetzen
         resetWeekButtonBorders();
