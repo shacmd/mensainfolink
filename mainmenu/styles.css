@@ -29,25 +29,30 @@ body {
     border-left: 2px solid black;
 }
 
-.dayOfWeek {
+button {
     justify-content: center;
     border-radius: 5px;
     border: 2px solid black;
     padding: 10px 20px;
     margin: 0 5px;
     font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 button {
     justify-content: center;
     border-radius: 5px;
     border: 2px solid black;
-    padding: 5px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-weight: bold;
     background-color: white;
     cursor: pointer;
-    font-weight: bold;
     font-size: 16px;
 }
+
 
 #weekOverview {
     margin-right: 10px;
@@ -71,4 +76,60 @@ select {
     background-position: right 10px center;
     background-size: 22px;
     min-width: 135px;
+    cursor: pointer;
+}
+
+.menu {
+    padding-top: 10px;
+}
+
+.menu-title {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.dishes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dish {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    max-width: 250px;
+    min-width: 250px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.dish-head {
+    position: relative;
+    border-bottom: 2px solid black;
+}
+
+.dish-head > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dish-name {
+    margin: 5px 2px;
+    font-size: 20px;
+}
+
+.price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    padding: 5px;
+    background-color: white;
+    border: 2px solid green;
+    font-weight: bold;
 }
