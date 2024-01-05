@@ -6,6 +6,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .head {
@@ -40,19 +41,6 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
-
-button {
-    justify-content: center;
-    border-radius: 5px;
-    border: 2px solid black;
-    padding: 10px 20px;
-    margin: 0 5px;
-    font-weight: bold;
-    background-color: white;
-    cursor: pointer;
-    font-size: 16px;
-}
-
 
 #weekOverview {
     margin-right: 10px;
@@ -132,4 +120,22 @@ select {
     background-color: white;
     border: 2px solid green;
     font-weight: bold;
+}
+
+.filter {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background: #f2f2f2 url("../icons/filter.png") bottom 5px center no-repeat;
+    background-size: 40px;
+    min-height: 60px;
+    min-width: 60px;
+    cursor: pointer;
 }
