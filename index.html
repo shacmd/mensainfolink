@@ -12,8 +12,8 @@
         <!-- Schließen-Schaltfläche -->
         <div class="head" id="headPopup">
             <button id="back"></button>
-            <div class="completeRight" style="margin-right: 20px">
-                <div id="clonedLanguage"></div>
+            <div class="completeRight" id="popupHeadRight" style="margin-right: 20px">
+
             </div>
         </div>
         <!-- Container für den abgerufenen Inhalt -->
@@ -35,6 +35,7 @@
             </div>
             <button id="weekOverview">Wochenübersicht</button>
             <div class="completeRight" id="mainOptions">
+                <div class="time" id="timer">60 Sekunden verbleibend</div>
                 <select id="sorting">
                     <option id="option_popularity" value="popularity">Beliebtheit</option>
                     <option id="option_price" value="price">Preis</option>
@@ -44,7 +45,6 @@
                     <option value="english">English</option>
                     <option value="only-pictures">Only pictures</option>
                 </select>
-                <div class="time" id="timer">60 Sekunden verbleibend</div>
             </div>
         </div>
         <div class="halfScreen" id="firstUser">

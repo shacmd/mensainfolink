@@ -15,6 +15,7 @@ function startSecondUser(seconds) {
         seconds--;
         if (seconds < 0) {
             clearInterval(timerInterval);
+            closePopup();
             toggleSecondUser(false);
         }
     }, 1000);
@@ -34,6 +35,7 @@ function toggleSecondUser(status) {
     headElement.style.maxWidth = status ? "50%" : "100%";
     headPopupElement.style.maxWidth = status ? "50%" : "100%";
     popupElement.style.maxWidth = status ? "50%" : "100%";
+    updateDishes();
     onWindowResize();
 }
 
@@ -70,6 +72,7 @@ window.onload = function() {
     toggleSecondUser(false);
     updateDishes();
     handleLanguageChange();
+    startSecondUser(60)
     document.getElementById("btn_monday").style.border = "2px solid green";
 
     let languageSelect = document.getElementById("language");
@@ -259,7 +262,11 @@ function resetWeekButtonBorders() {
 
 function openPopup() {
     let languageSelect = document.getElementById("language");
-    document.getElementById('clonedLanguage').appendChild(languageSelect);
+    let timeElement = document.getElementById("timer");
+    let popupHeadRightElement = document.getElementById('popupHeadRight');
+    popupHeadRightElement.appendChild(timeElement);
+    popupHeadRightElement.appendChild(languageSelect);
+
 
     let popupContent = document.getElementById("popupContent");
     popupContent.innerHTML = `<iframe src="dishView/dishView.html" id="popupIframe"></iframe>`;
@@ -269,6 +276,10 @@ function openPopup() {
 function closePopup() {
     updateDishes();
     let languageSelect = document.getElementById("language");
-    document.getElementById('mainOptions').appendChild(languageSelect);
+    let sortingElement = document.getElementById("sorting");
+    let timeElement = document.getElementById("timer");
+    let mainOptionsElement = document.getElementById('mainOptions');
+    mainOptionsElement.appendChild(languageSelect);
+    mainOptionsElement.insertBefore(timeElement, sortingElement);
     document.getElementById('popup').style.display = 'none';
 }
