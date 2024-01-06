@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f2;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+#foodImage {
+    width: 300px;
+    height: 300px;
+}
+
+#buttons {
+    margin-top: 20px;
+}
+
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#foodInfo {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#foodInfo td, #foodInfo th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#foodInfo tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
