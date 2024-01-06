@@ -7,9 +7,22 @@
 </head>
 <body>
     <script type="module" src="data.js"></script>
-    <script type="module" src="mainmenu.js"></script>
+    <script type="module" src="script.js"></script>
+    <div id="popup">
+        <!-- Schließen-Schaltfläche -->
+        <div class="head" id="headPopup">
+            <button id="back"></button>
+            <div class="completeRight" style="margin-right: 20px">
+                <div id="clonedLanguage"></div>
+            </div>
+        </div>
+        <!-- Container für den abgerufenen Inhalt -->
+        <div id="popupContent">
+
+        </div>
+    </div>
     <div class="container">
-        <div class="head">
+        <div class="head" id="mainHead">
             <div class="week">
                 <button id="btn_monday">Mo</button>
                 <button id="btn_tuesday">Di</button>
@@ -21,7 +34,7 @@
                 <button id="btn_mondayNextWeek">Mo</button>
             </div>
             <button id="weekOverview">Wochenübersicht</button>
-            <div class="completeRight">
+            <div class="completeRight" id="mainOptions">
                 <select id="sorting">
                     <option id="option_popularity" value="popularity">Beliebtheit</option>
                     <option id="option_price" value="price">Preis</option>

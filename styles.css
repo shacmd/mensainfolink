@@ -7,11 +7,13 @@ body {
 .container {
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 
 .content, .content2{
     margin-top: 60px;
     height: 100%;
+    width: 100%;
     overflow-y: auto;
 }
 
@@ -24,6 +26,7 @@ body {
 .halfScreen {
     min-width: 50%;
     height: 100vh;
+    width: 100%;
 }
 
 
@@ -117,7 +120,7 @@ select {
     border: 2px solid black;
     border-radius: 5px;
     appearance: none;
-    background-image: url("../icons/dropdown-pfeil.png");
+    background-image: url("icons/dropdown-pfeil.png");
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 22px;
@@ -148,6 +151,7 @@ select {
     flex: 1 1 0;
     margin-top: 10px;
     min-width: 250px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     border: 2px solid black;
@@ -199,9 +203,44 @@ select {
     border: 2px solid black;
     border-radius: 5px;
     padding: 10px;
-    background: white url("../icons/filter.png") bottom 5px center no-repeat;
+    background: white url("/icons/filter.png") bottom 5px center no-repeat;
     background-size: 40px;
     height: 60px;
     width: 60px;
     cursor: pointer;
+}
+
+#popup {
+    display: none;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+    overflow: auto;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    z-index: 9999;
+}
+
+#popupContent {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#popupIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#back {
+    background: white url("/icons/back.png") center no-repeat;
+    background-size: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
 }

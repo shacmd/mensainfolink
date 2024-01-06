@@ -24,18 +24,16 @@ function toggleSecondUser(status) {
     secondUser = status;
     const secondUserElement = document.getElementById('secondUser');
     const separatorElement = document.querySelector('.separator');
-    const headElement = document.querySelector('.head');
+    const headElement = document.getElementById('mainHead');
+    const headPopupElement = document.getElementById('headPopup');
     const timeElement = document.getElementById('timer');
+    const popupElement = document.getElementById('popup');
     timeElement.style.display = status ? "Flex" : "None";
     secondUserElement.hidden = !status;
     separatorElement.hidden = !status;
-
-
-    console.log('Second User Element:', secondUserElement);
-    console.log('Separator Element:', separatorElement);
-    console.log('Time Element:', timeElement);
-
     headElement.style.maxWidth = status ? "50%" : "100%";
+    headPopupElement.style.maxWidth = status ? "50%" : "100%";
+    popupElement.style.maxWidth = status ? "50%" : "100%";
     onWindowResize();
 }
 
@@ -43,22 +41,23 @@ function getLocalStorageData() {
     language = localStorage.getItem('language');
     document.getElementById("language").value = language;
 
-    //preferredMealsList = JSON.parse(localStorage.getItem("preferredMeals"));
+    let preferredMealsListData = localStorage.getItem("preferredMeals");
+    if(preferredMealsListData !== null) preferredMealsList = JSON.parse(preferredMealsListData);
 }
 
 window.addEventListener('resize', onWindowResize);
 function onWindowResize() {
     const contentElement = document.querySelector('.content');
-    const headElement = document.querySelector('.head');
+    const headElement = document.getElementById('mainHead');
 
     const weekElement = document.querySelector('.week');
     const weekOverviewElement = document.getElementById('weekOverview');
     headElement.style.minWidth = `${weekElement.offsetWidth + weekOverviewElement.offsetWidth + 35}px`;
 
     const headHeight = headElement.offsetHeight;
-    contentElement.style.marginTop = `${headHeight - 20}px`;
+    contentElement.style.marginTop = `${headHeight}px`;
 
-    const completeRightElement = document.querySelector('.completeRight');
+    const completeRightElement = document.getElementById("mainOptions")
     if(headHeight > 100) {
         completeRightElement.style.marginLeft = "0px";
     } else {
@@ -68,15 +67,17 @@ function onWindowResize() {
 
 window.onload = function() {
     //Standart Einstellungen
-    startSecondUser(60);
-    //toggleSecondUser(false);
-    getLocalStorageData();
+    toggleSecondUser(false);
     updateDishes();
     handleLanguageChange();
     document.getElementById("btn_monday").style.border = "2px solid green";
 
-    document.getElementById("language").addEventListener("change", handleLanguageChange);
+    let languageSelect = document.getElementById("language");
+    languageSelect.addEventListener("change", handleLanguageChange);
+
     document.getElementById("sorting").addEventListener("change", updateDishes);
+
+    document.getElementById("back").addEventListener("click", closePopup);
 
     // Event-Listener für jeden Button hinzufügen
     addWeekButtonClickListener("btn_monday", data.foodOnMonday);
@@ -90,10 +91,12 @@ window.onload = function() {
 
 // Funktion zum Aktualisieren der Gerichte
 function updateDishes() {
+    getLocalStorageData();
     let otherMeals = document.getElementById("otherMeals");
     let preferredMeals = document.getElementById("preferredMeals");
     let mealsToday = document.getElementById("mealsToday");
     let title_preferredMeals = document.getElementById("title_preferredMeals");
+    let title_otherMeals = document.getElementById("title_otherMeals");
 
     otherMeals.innerHTML = '';
     mealsToday.innerHTML = '';
@@ -108,8 +111,10 @@ function updateDishes() {
     let mealsOfTodayAndPreferred = currentShownMealsSorted.filter(value => preferredMealsSorted.includes(value));
     title_preferredMeals.hidden = mealsOfTodayAndPreferred.length === 0;
 
+
     //Entferne Gerichte die schon bei den lielings Gerichten drinne sind
     currentShownMealsSorted = currentShownMealsSorted.filter(item => !mealsOfTodayAndPreferred.includes(item));
+    title_otherMeals.hidden = currentShownMealsSorted.length === 0;
 
     insertMealsToMenu(mealsOfTodayAndPreferred, preferredMeals);
     insertMealsToMenu(currentShownMealsSorted, otherMeals);
@@ -165,16 +170,20 @@ function insertMealsToMenu(meals, menu) {
                 </div>
             </div>
         `;
-        menu.innerHTML += dishHtml;
+        menu.insertAdjacentHTML('beforeend', dishHtml);
         let dishDescriptionHtml = `
             <div class="dish-description">
                 ${description}
             </div>
         `;
+        let currentDish = document.getElementById(menu.id + "_dish_" + id);
         if(language !== "only-pictures") {
-            let dish = document.getElementById(menu.id + "_dish_" + id);
-            dish.innerHTML += dishDescriptionHtml;
+            currentDish.innerHTML += dishDescriptionHtml;
         }
+        currentDish.addEventListener('click', function () {
+            localStorage.setItem("selectedFood", id);
+            openPopup();
+        });
     }
 }
 
@@ -213,6 +222,11 @@ function handleLanguageChange() {
         document.getElementById("title_preferredMeals").innerText = "Suggestions for you";
         document.getElementById("title_mealsToday").innerText = "Today's dishes";
     }
+    let popupIframe = document.getElementById("popupIframe");
+    if(popupIframe !== null) {
+        popupIframe.contentWindow.location.reload(true);
+    }
+
     updateDishes();
     onWindowResize();
 }
@@ -241,4 +255,20 @@ function resetWeekButtonBorders() {
         const button = document.getElementById(buttonId);
         button.style.border = "2px solid black";
     }
+}
+
+function openPopup() {
+    let languageSelect = document.getElementById("language");
+    document.getElementById('clonedLanguage').appendChild(languageSelect);
+
+    let popupContent = document.getElementById("popupContent");
+    popupContent.innerHTML = `<iframe src="dishView/dishView.html" id="popupIframe"></iframe>`;
+    document.getElementById('popup').style.display = 'block';
+}
+
+function closePopup() {
+    updateDishes();
+    let languageSelect = document.getElementById("language");
+    document.getElementById('mainOptions').appendChild(languageSelect);
+    document.getElementById('popup').style.display = 'none';
 }
