@@ -6,7 +6,7 @@ body {
 
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
 }
 
@@ -15,13 +15,16 @@ body {
 }
 
 .head {
-    padding: 10px 0;
+    padding: 10px 30px 10px 20px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    position: fixed;
+    justify-content: space-between;
     z-index: 1000;
     background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 
