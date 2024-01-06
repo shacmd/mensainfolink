@@ -1,14 +1,23 @@
 import * as data from "./data.js";
 
 let currentDayMeals = data.foodOnMonday;
-let language = "german";
+let language;
+
+function getLocalStorageData() {
+    language = localStorage.getItem('language');
+    document.getElementById("language").value = language;
+}
+
 
 window.onload = function() {
     //Standart Einstellungen
+    getLocalStorageData();
     updateDishes();
+    handleLanguageChange();
     document.getElementById("btn_monday").style.border = "2px solid green";
 
     document.getElementById("language").addEventListener("change", handleLanguageChange);
+    document.getElementById("sorting").addEventListener("change", updateDishes);
 
     // Event-Listener für jeden Button hinzufügen
     addWeekButtonClickListener("btn_monday", data.foodOnMonday);
@@ -23,9 +32,44 @@ window.onload = function() {
 // Funktion zum Aktualisieren der Gerichte
 function updateDishes() {
     let otherMeals = document.getElementById("otherMeals");
+    let sortBy = document.getElementById("sorting").selectedIndex;
     otherMeals.innerHTML = '';
 
+    //Sortieren
+    let sortOrder = [];
     for (let id of currentDayMeals) {
+        if(sortOrder.length === 0) {
+            sortOrder.push(id);
+        } else {
+            let inserted = false;
+            let foodItemCurrent = data.foodItems[id];
+
+            for (let prevIndex = 0; prevIndex < sortOrder.length; prevIndex++) {
+                let prevId = sortOrder[prevIndex];
+                let foodItemPrev = data.foodItems[prevId];
+
+                if (sortBy === 0) {
+                    if (foodItemPrev.popularity <= foodItemCurrent.popularity) {
+                        sortOrder.splice(prevIndex, 0, id);
+                        inserted = true;
+                        break;
+                    }
+                } else {
+                    if (foodItemPrev.price >= foodItemCurrent.price) {
+                        sortOrder.splice(prevIndex, 0, id);
+                        inserted = true;
+                        break;
+                    }
+                }
+            }
+            if(!inserted) {
+                sortOrder.push(id);
+            }
+        }
+
+    }
+
+    for (let id of sortOrder) {
         let foodItem = data.foodItems[id];
         let description = language === "german" ? foodItem.description_de : foodItem.description_en;
         let dishHtml = `
@@ -52,6 +96,7 @@ function updateDishes() {
 
 function handleLanguageChange() {
     language = document.getElementById("language").value;
+    localStorage.setItem('language', language);
     if(language === "german") {
         document.getElementById("btn_monday").innerText = "Mo";
         document.getElementById("btn_tuesday").innerText = "Di";

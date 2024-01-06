@@ -1,18 +1,27 @@
 body {
-    padding: 10px;
     font-family: Arial, sans-serif;
+    padding: 0 10px 10px 10px;
+    margin: 0 10px 10px 10px;
 }
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
 }
 
+.content {
+    margin-top: 60px;
+}
+
 .head {
+    padding: 10px 0;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    position: fixed;
+    z-index: 1000;
+    background-color: white;
 }
 
 
@@ -69,6 +78,9 @@ select {
 }
 
 .menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     padding-top: 10px;
 }
 
@@ -79,18 +91,18 @@ select {
 
 .dishes {
     display: flex;
-    flex-direction: row;
+    justify-content: left;
     flex-wrap: wrap;
 }
 
 .dish {
+    flex: 1 1 0;
     margin-top: 10px;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     border: 2px solid black;
     border-radius: 10px;
-    max-width: 250px;
-    min-width: 250px;
     overflow: hidden;
     cursor: pointer;
     margin-right: 10px;
@@ -98,18 +110,18 @@ select {
 
 .dish-head {
     position: relative;
-    max-height: 200px;
+    flex-grow: 1;
 }
 
 .dish-head > img {
-    min-height: 200px;
-    max-width: 300px;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 1 / 0.7;
 }
 
 .dish-description {
+    height: 100px;
     border-top: 2px solid black;
     padding-top: 5px;
     padding-left: 2px;
@@ -128,11 +140,11 @@ select {
 }
 
 .filter {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: auto;
     display: flex;
     justify-content: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
     font-weight: bold;
     font-size: 18px;
     border: 2px solid black;
@@ -142,5 +154,7 @@ select {
     background-size: 40px;
     min-height: 60px;
     min-width: 60px;
+    height: 60px;
+    width: 60px;
     cursor: pointer;
 }

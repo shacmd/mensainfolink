@@ -42,7 +42,7 @@ export const foodItems = [
         tags: [Tag.Vegetarian],
         image: '../images/gemuesepfanne-1.jpg',
         price: 3.50,
-        popularity: 10,
+        popularity: 30,
     },
     {
         name_de: 'Tomatensalat mit Mozzarella',
