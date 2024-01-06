@@ -26,29 +26,41 @@
                     <option id="option_popularity" value="popularity">Beliebtheit</option>
                     <option id="option_price" value="price">Preis</option>
                 </select>
-            </div>
-            <div>
                 <select id="language">
                     <option value="german">German</option>
                     <option value="english">English</option>
                     <option value="only-pictures">Only pictures</option>
                 </select>
+                <div class="time" id="timer">60 Sekunden verbleibend</div>
             </div>
         </div>
-        <div class="content">
-            <div class="menu">
-                <div class="menu-title" id="title_preferredMeals">Vorschläge für dich</div>
-                <div class="dishes" id="preferredMeals">
+        <div class="halfScreen" id="firstUser">
+            <div class="content">
+                <div class="menu">
+                    <div class="menu-title" id="title_preferredMeals">Vorschläge für dich</div>
+                    <div class="dishes" id="preferredMeals">
 
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="menu-title" id="title_otherMeals">Weitere Gerichte</div>
+                    <div class="dishes" id="otherMeals">
+
+                    </div>
+                </div>
+                <div class="filter">Filter</div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="halfScreen" id="secondUser">
+            <div class="content2">
+                <div class="menu">
+                    <div class="menu-title" id="title_mealsToday">Heutige Gerichte</div>
+                    <div class="dishes" id="mealsToday">
+
+                    </div>
                 </div>
             </div>
-            <div class="menu">
-                <div class="menu-title" id="title_otherMeals">Weitere Gerichte</div>
-                <div class="dishes" id="otherMeals">
-
-                </div>
-            </div>
-            <div class="filter">Filter</div>
         </div>
     </div>
 </body>

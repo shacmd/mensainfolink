@@ -6,40 +6,77 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
-    position: relative;
+    flex-direction: row;
 }
 
-.content {
+.content, .content2{
     margin-top: 60px;
+    height: 100%;
+    overflow-y: auto;
 }
+
+.content2 {
+    margin-top: 0;
+    padding-left: 10px;
+}
+
+
+.halfScreen {
+    min-width: 50%;
+    height: 100vh;
+}
+
 
 .head {
-    padding: 10px 30px 10px 20px;
+    min-width: 750px;
+    box-sizing: border-box;
+    max-width: 50%;
+    padding: 10px 10px 10px 20px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     flex-direction: row;
-    justify-content: space-between;
     z-index: 1000;
     background-color: white;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    gap: 5px;
 }
 
+.completeRight {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    column-gap: 5px;
+}
+
+
+#weekOverview {
+    max-width: 200px;
+    margin: 0;
+}
 
 .week {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 5px;
     border-radius: 5px;
     border: 2px solid black;
-    margin-right: 10px;
 }
 
 .nextWeek {
     border-left: 2px solid black;
+}
+
+.separator {
+    border-left: 3px solid black;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 50%;
 }
 
 button {
@@ -54,29 +91,38 @@ button {
     font-size: 16px;
 }
 
-#weekOverview {
-    margin-right: 10px;
-}
-
-.completeRight {
-    margin-left: auto;
-    margin-right: 10px;
+.time {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    padding-left: 10px;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid red;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    font-size: 20px;
+    white-space: nowrap;
+    color: red;
 }
 
 select {
+    box-sizing: border-box;
     font-weight: bold;
     padding: 5px;
     font-size: 16px;
     height: 100%;
+    width: 100%;
     border: 2px solid black;
     border-radius: 5px;
     appearance: none;
-    box-sizing: border-box;
     background-image: url("../icons/dropdown-pfeil.png");
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 22px;
     min-width: 135px;
+    min-height: 50px;
     cursor: pointer;
 }
 
@@ -153,10 +199,8 @@ select {
     border: 2px solid black;
     border-radius: 5px;
     padding: 10px;
-    background: #f2f2f2 url("../icons/filter.png") bottom 5px center no-repeat;
+    background: white url("../icons/filter.png") bottom 5px center no-repeat;
     background-size: 40px;
-    min-height: 60px;
-    min-width: 60px;
     height: 60px;
     width: 60px;
     cursor: pointer;
