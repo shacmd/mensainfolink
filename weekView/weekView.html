@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Weekly Menu</title>
     <link rel="stylesheet" type="text/css" href="weekView.css">
-    <script type="module" src="data.js"></script>
 </head>
 <body>
+    <script type="module" src="data.js"></script>
+    <script type="module" src="weekViewScript.js"></script>
     <div class="language-switch">
         <select id="language">
             <option value="german">German</option>
@@ -16,16 +17,15 @@
     <table id="weekly-menu">
         <thead>
             <tr>
-                <th>Montag</th>
-                <th>Dienstag</th>
-                <th>Mittwoch</th>
-                <th>Donnerstag</th>
-                <th>Freitag</th>
+                <th id="label-Monday">Montag</th>
+                <th id="label-Tuesday">Dienstag</th>
+                <th id="label-Wednesday">Mittwoch</th>
+                <th id="label-Thursday">Donnerstag</th>
+                <th id="label-Friday">Freitag</th>
             </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
-    <script type="module" src="weekViewScript.js"></script>
 </body>
 </html>

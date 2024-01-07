@@ -7,14 +7,19 @@ window.onload = function() {
     const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     const weekdaysGerman = { 'Monday': 'Montag', 'Tuesday': 'Dienstag', 'Wednesday': 'Mittwoch', 'Thursday': 'Donnerstag', 'Friday': 'Freitag' };
 
-    weekdays.forEach((day) => {
-        const table = document.getElementById(`foodOn${day}`);
-        table.innerHTML = '';
+    const table = document.getElementById('weekly-menu');
+    const tbody = table.querySelector('tbody');
+
+    let row = document.createElement('tr');
+    tbody.appendChild(row);
+    
+
+    // append the dishes for each day
+    weekdays.forEach((day, index) => {
+        let cell = document.createElement('td');
+        row.appendChild(cell);
 
         for (let i = 0; i < data[`foodOn${day}`].length; i++) {
-            let row = document.createElement('tr');
-            let cell = document.createElement('td');
-
             let dish = data.foodItems[data[`foodOn${day}`][i]];
 
             if (dish) {
@@ -26,15 +31,20 @@ window.onload = function() {
                 img.src = dish.image;
                 img.alt = link.textContent;
 
-                let weekdayName = document.createElement('span');
-                weekdayName.textContent = language === 'german' ? weekdaysGerman[day] : day;
-
-                cell.appendChild(weekdayName);
                 cell.appendChild(img);
                 cell.appendChild(link);
-                row.appendChild(cell);
-                table.appendChild(row);
             }
+        }
+    });
+
+    // event listener to language switch
+    document.getElementById('language').addEventListener('change', function() {
+        let language = this.value;
+        localStorage.setItem("language", language);
+
+        // Update the weekday labels
+        for (let day in weekdaysGerman) {
+            document.getElementById(`label-${day}`).textContent = language === 'german' ? weekdaysGerman[day] : day;
         }
     });
 }
