@@ -1,4 +1,4 @@
-import * as data from "/mensainfolink/data.js";
+import * as data from "../data.js";
 
 window.onload = function() {
     let selectedFood = parseInt(localStorage.getItem("selectedFood"), 10);
