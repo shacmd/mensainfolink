@@ -33,11 +33,13 @@ window.onload = function() {
                 let img = document.createElement('img');
                 img.src = dish.image;
                 img.alt = p.textContent;
-
-                // Füge img und link zur dish-Klasse hinzu
                 dishDiv.appendChild(img);
-                dishDiv.appendChild(p);
 
+                if(language !== "only-pictures") {
+                    dishDiv.appendChild(p);
+                } else {
+                    img.style.border = "0px solid white";
+                }
                 // Füge die dish-Klasse zur Zelle hinzu
                 cell.appendChild(dishDiv);
             }

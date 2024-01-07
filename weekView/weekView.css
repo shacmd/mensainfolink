@@ -35,7 +35,6 @@ table {
 }
 
 #weekly-menu td img {
-    margin-bottom: 8px;
     aspect-ratio: 1 / 0.5;
     object-fit: cover;
 }
