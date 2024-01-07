@@ -10,7 +10,7 @@ body {
     height: 100%;
 }
 
-.content, .content2{
+.content, .content2 {
     margin-top: 60px;
     height: 100%;
     width: 100%;
@@ -19,7 +19,7 @@ body {
 
 .content2 {
     margin-top: 0;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 

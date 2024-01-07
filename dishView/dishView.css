@@ -30,6 +30,16 @@ button {
     cursor: pointer;
 }
 
+.liked {
+    background: green;
+    color: white;
+}
+
+.disliked {
+    background: red;
+    color: white;
+}
+
 #foodInfo {
     margin-top: 20px;
     border-collapse: collapse;

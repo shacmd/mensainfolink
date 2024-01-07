@@ -89,7 +89,8 @@ window.onload = function() {
     toggleSecondUser(false);
     updateDishes();
     handleLanguageChange();
-    document.getElementById("btn_monday").style.border = "2px solid green";
+    document.getElementById("btn_monday").style.background = "green";
+    document.getElementById("btn_monday").style.color = "white";
 
     let languageSelect = document.getElementById("language");
     languageSelect.addEventListener("change", handleLanguageChange);
@@ -262,7 +263,8 @@ function addWeekButtonClickListener(buttonId, foodData) {
         resetWeekButtonBorders();
 
         // Aktuellen Button mit grünem Rahmen markieren
-        this.style.border = "2px solid green";
+        this.style.backgroundColor = "green";
+        this.style.color = "white";
     });
 }
 
@@ -272,7 +274,8 @@ function resetWeekButtonBorders() {
 
     for (const buttonId of buttonIds) {
         const button = document.getElementById(buttonId);
-        button.style.border = "2px solid black";
+        button.style.backgroundColor = "white";
+        button.style.color = "black";
     }
 }
 
