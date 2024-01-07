@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.language-switch {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#weekly-menu {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px; /* Add a top margin */
+}
+
+#weekly-menu th, #weekly-menu td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+#weekly-menu th {
+    background-color: #ffb266;
+    color: white;
+}
