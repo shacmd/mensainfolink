@@ -106,6 +106,9 @@ window.onload = function() {
     document.getElementById("filter").addEventListener('click', function () {
         openPopup("filter");
     });
+    document.getElementById("weekOverview").addEventListener('click', function () {
+        openPopup("week");
+    });
 
     // Event-Listener für jeden Button hinzufügen
     addWeekButtonClickListener("btn_monday", data.foodOnMonday);
@@ -311,6 +314,8 @@ function openPopup(popup) {
         popupContent.innerHTML = `<iframe src="dishView/dishView.html" id="popupIframe"></iframe>`;
     } else if(popup === "filter") {
         popupContent.innerHTML = `<iframe src="filterView/filter.html" id="popupIframe"></iframe>`;
+    } else if(popup === "week") {
+        popupContent.innerHTML = `<iframe src="weekView/weekView.html" id="popupIframe"></iframe>`;
     }
     document.getElementById('popup').style.display = 'block';
 }

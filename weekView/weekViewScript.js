@@ -23,28 +23,29 @@ window.onload = function() {
             let dish = data.foodItems[data[`foodOn${day}`][i]];
 
             if (dish) {
-                let link = document.createElement('a');
-                link.href = 'dishView.html?id=' + data[`foodOn${day}`][i];
-                link.textContent = language === 'german' ? dish.name_de : dish.name_en;
+                // Erstelle eine div-Klasse mit dem Namen "dish" für jedes Bild-Link-Paar
+                let dishDiv = document.createElement('div');
+                dishDiv.classList.add('dish');
+
+                let p = document.createElement('p');
+                p.textContent = language === 'german' ? dish.name_de : dish.name_en;
 
                 let img = document.createElement('img');
                 img.src = dish.image;
-                img.alt = link.textContent;
+                img.alt = p.textContent;
 
-                cell.appendChild(img);
-                cell.appendChild(link);
+                // Füge img und link zur dish-Klasse hinzu
+                dishDiv.appendChild(img);
+                dishDiv.appendChild(p);
+
+                // Füge die dish-Klasse zur Zelle hinzu
+                cell.appendChild(dishDiv);
             }
         }
     });
 
-    // event listener to language switch
-    document.getElementById('language').addEventListener('change', function() {
-        let language = this.value;
-        localStorage.setItem("language", language);
-
-        // Update the weekday labels
-        for (let day in weekdaysGerman) {
-            document.getElementById(`label-${day}`).textContent = language === 'german' ? weekdaysGerman[day] : day;
-        }
-    });
+    // Update the weekday labels
+    for (let day in weekdaysGerman) {
+        document.getElementById(`label-${day}`).textContent = language === 'german' ? weekdaysGerman[day] : day;
+    }
 }
