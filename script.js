@@ -7,38 +7,21 @@ let preferredMealsList = [];
 let language = "german";
 let secondUser = true;
 
-let timer;
-
-function updateTimerText(seconds) {
-    let timerText = language === 'german' ? ' Sekunden verbleibend' : ' seconds remaining';
-    document.getElementById('timer').textContent = seconds + timerText;
-}
-
-export function startSecondUser(seconds) {
-    if(secondUser) return;
-    updateTimerText(seconds);
+function startSecondUser(seconds) {
     toggleSecondUser(true);
-    timer = setInterval(function() {
+    const timerInterval = setInterval(function() {
+        let timerText = language === 'german' ? ' Sekunden verbleibend' : ' seconds remaining';
+        document.getElementById('timer').textContent = seconds + timerText;
         seconds--;
-        updateTimerText(seconds)
         if (seconds < 0) {
-            clearInterval(timer);
+            clearInterval(timerInterval);
             closePopup();
-            stopSecondUser();
+            toggleSecondUser(false);
         }
     }, 1000);
 }
 
-import { sendStopSecondUser } from './wozListener.js';
-export function stopSecondUser() {
-    if(!secondUser) return;
-    sendStopSecondUser();
-    clearInterval(timer);
-    toggleSecondUser(false);
-}
-
 function toggleSecondUser(status) {
-    if(status === secondUser) return;
     secondUser = status;
     const secondUserElement = document.getElementById('secondUser');
     const separatorElement = document.querySelector('.separator');
@@ -89,8 +72,8 @@ window.onload = function() {
     toggleSecondUser(false);
     updateDishes();
     handleLanguageChange();
-    document.getElementById("btn_monday").style.background = "green";
-    document.getElementById("btn_monday").style.color = "white";
+    startSecondUser(60)
+    document.getElementById("btn_monday").style.border = "2px solid green";
 
     let languageSelect = document.getElementById("language");
     languageSelect.addEventListener("change", handleLanguageChange);
@@ -202,6 +185,7 @@ function insertMealsToMenu(meals, menu) {
         }
         currentDish.addEventListener('click', function () {
             localStorage.setItem("selectedFood", id);
+            localStorage.setItem("selectedFoodImage", foodItem.image);
             openPopup();
         });
     }
@@ -263,8 +247,7 @@ function addWeekButtonClickListener(buttonId, foodData) {
         resetWeekButtonBorders();
 
         // Aktuellen Button mit grünem Rahmen markieren
-        this.style.backgroundColor = "green";
-        this.style.color = "white";
+        this.style.border = "2px solid green";
     });
 }
 
@@ -274,8 +257,7 @@ function resetWeekButtonBorders() {
 
     for (const buttonId of buttonIds) {
         const button = document.getElementById(buttonId);
-        button.style.backgroundColor = "white";
-        button.style.color = "black";
+        button.style.border = "2px solid black";
     }
 }
 
@@ -286,10 +268,16 @@ function openPopup() {
     popupHeadRightElement.appendChild(timeElement);
     popupHeadRightElement.appendChild(languageSelect);
 
+    let selectedFoodImage = localStorage.getItem("selectedFoodImage");
 
     let popupContent = document.getElementById("popupContent");
     popupContent.innerHTML = `<iframe src="dishView/dishView.html" id="popupIframe"></iframe>`;
     document.getElementById('popup').style.display = 'block';
+
+    let iframe = document.getElementById("popupIframe");
+    iframe.onload = function () {
+        iframe.contentWindow.document.getElementById("foodImage").src = selectedFoodImage;
+    };
 }
 
 function closePopup() {
