@@ -1,10 +1,10 @@
 export const Tag = {
-    Meat: "Meat",
-    Vegan: "Vegan",
-    Vegetarian: "Vegetarian",
-    Fish: "Fish",
-    Wheat: "Wheat",
-    Milk: "Milk"
+    Meat: "meat",
+    Vegan: "vegan",
+    Vegetarian: "vegetarian",
+    Fish: "fisch",
+    Wheat: "wheat",
+    Milk: "milk"
 };
 
 export const foodItems = [
@@ -21,7 +21,7 @@ export const foodItems = [
         carbs: 14,
         sugar: 10.4,
         protein: 0.3,
-        tags: [Tag.Meat],
+        tags: [Tag.Meat, Tag.Milk],
         image: '../images/pizza.jpg',
         price: 5.50,
         popularity: 100,
@@ -57,7 +57,7 @@ export const foodItems = [
         carbs: 5.8,
         sugar: 3.5,
         protein: 8.1,
-        tags: [Tag.Vegetarian],
+        tags: [Tag.Vegetarian, Tag.Milk],
         image: '../images/tomate-mozzarella-salat.jpg',
         price: 2.50,
         popularity: 20,
@@ -129,7 +129,7 @@ export const foodItems = [
         carbs: 5.8,
         sugar: 3.5,
         protein: 8.1,
-        tags: [Tag.Vegetarian],
+        tags: [Tag.Vegetarian, Tag.Milk],
         image: '../images/caprese_salad.jpg',
         price: 6.50,
         popularity: 25,

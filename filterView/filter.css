@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+}
+
+.filter-btn, .reset-btn{
+    padding: 20px;
+    margin: 15px;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: inline-block;
+    width: 200px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reset-btn {
+    background-color: red;
+    color: white;
+}
+
+.disabled {
+    text-decoration: line-through;
+}
+
+.filter-btn.large {
+    padding: 24px;
+}
+
+.filter-line {
+    text-align: center;
+}
+
+.content-item {
+    display: none;
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.content-item.active {
+    display: block;
+}
+
+.filter-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.language-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.language-btn {
+    margin: 10px;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.navigation-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.back-btn {
+    padding: 12px;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #fff;
+}

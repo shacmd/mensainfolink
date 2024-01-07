@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <link rel="stylesheet" href="filter.css">
+</head>
+<body>
+<div class="filter-container">
+    <div class="filter-line">
+        <button class="filter-btn large" id="meat">Fleisch</button>
+        <button class="filter-btn large" id="vegetarian">Vegetarisch</button>
+        <button class="filter-btn large" id="vegan">Vegan</button>
+    </div>
+    <div class="filter-line">
+        <button class="filter-btn" id="wheat">Weizen</button>
+        <button class="filter-btn" id="milk">Milk Produkt</button>
+        <button class="filter-btn" id="fisch">Fisch</button>
+    </div>
+    <button class="reset-btn" id="reset">Reset Filters</button>
+</div>
+
+<div id="content">
+    <div class="content-item fleisch vegan">Dish with meat and vegan ingredients</div>
+    <div class="content-item vegetarisch weizen">Vegetarian dish with wheat</div>
+    <div class="content-item vegan milkproduct">Vegan dish with milk product</div>
+    <div class="content-item fisch">Fish dish</div>
+    <div class="content-item fleisch weizen fisch">Dish with meat, wheat, and fish</div>
+</div>
+<script type="module" src="filter.js"></script>
+</body>
+</html>

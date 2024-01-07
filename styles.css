@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     padding: 0 10px 10px 10px;
     margin: 0 10px 10px 10px;
+    background-color: #f8f8f8;
 }
 
 .container {
@@ -40,7 +41,7 @@ body {
     justify-content: flex-start;
     flex-direction: row;
     z-index: 1000;
-    background-color: white;
+    background-color: #f8f8f8;
     position: fixed;
     top: 0;
     left: 0;
@@ -221,7 +222,7 @@ select {
     padding: 20px;
     height: 100%;
     overflow: auto;
-    background-color: #fff;
+    background-color: #f8f8f8;
     border: 2px solid #ccc;
     z-index: 9999;
 }
