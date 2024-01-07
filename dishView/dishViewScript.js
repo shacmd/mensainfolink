@@ -37,6 +37,14 @@ window.onload = function() {
 
         preferredMealsList.push(selectedFood);
         localStorage.setItem("preferredMeals", JSON.stringify(preferredMealsList));
+        
+        if(this.style.backgroundColor != "green"){
+            this.style.backgroundColor = "green";
+        }else{
+            this.style.backgroundColor = "white";
+        }
+        let dislikeElement = document.getElementById("dislikeButton");
+        if(dislikeElement.style.backgroundColor == "red") dislikeElement.style.backgroundColor = "white";
     });
     let dislikeElement = document.getElementById("dislikeButton");
     dislikeElement.addEventListener("click", function () {
@@ -46,6 +54,14 @@ window.onload = function() {
 
         preferredMealsList = preferredMealsList.filter(item => item !== selectedFood);
         localStorage.setItem("preferredMeals", JSON.stringify(preferredMealsList));
+
+        if(this.style.backgroundColor != "red"){
+            this.style.backgroundColor = "red";
+        }else{
+            this.style.backgroundColor = "white";
+        }
+        let likeElement = document.getElementById("likeButton");
+        if(likeElement.style.backgroundColor == "green") likeElement.style.backgroundColor = "white";
     });
 };
 
