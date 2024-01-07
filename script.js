@@ -47,12 +47,14 @@ function toggleSecondUser(status) {
     const headPopupElement = document.getElementById('headPopup');
     const timeElement = document.getElementById('timer');
     const popupElement = document.getElementById('popup');
+    const filterElement = document.getElementById('filter');
     timeElement.style.display = status ? "Flex" : "None";
     secondUserElement.hidden = !status;
     separatorElement.hidden = !status;
     headElement.style.maxWidth = status ? "50%" : "100%";
     headPopupElement.style.maxWidth = status ? "50%" : "100%";
     popupElement.style.maxWidth = status ? "50%" : "100%";
+    filterElement.style.marginRight = status ? "20px" : "10px";
     updateDishes();
     onWindowResize();
 }

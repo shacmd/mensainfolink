@@ -165,7 +165,7 @@ export const foodItems = [
         carbs: 12.5,
         sugar: 4.0,
         protein: 8.8,
-        tags: [Tag.Vegetarian],
+        tags: [Tag.Vegetarian, Tag.Milk],
         image: '../images/greek_salad.jpg',
         price: 7.50,
         popularity: 28,
@@ -225,10 +225,10 @@ export const foodItems = [
         popularity: 30,
     },
 ];
-export const foodOnMonday = [0, 1, 2, 3];
-export const foodOnTuesday = [4, 8, 2, 5];
-export const foodOnWednesday = [1, 9, 3, 7];
-export const foodOnThursday = [6, 0, 4, 8];
-export const foodOnFriday = [3, 7, 1, 9];
-export const foodOnSaturday = [2, 5, 6, 0];
-export const foodOnMondayNextWeek = [8, 2, 7, 1];
+export const foodOnMonday = [0, 1, 2, 3, 11];
+export const foodOnTuesday = [4, 8, 2, 5, 10];
+export const foodOnWednesday = [1, 9, 3, 7, 5];
+export const foodOnThursday = [6, 0, 4, 8, 2];
+export const foodOnFriday = [3, 7, 1, 9, 4];
+export const foodOnSaturday = [2, 5, 6, 0, 4];
+export const foodOnMondayNextWeek = [8, 2, 7, 1, 10];
