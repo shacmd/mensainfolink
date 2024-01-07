@@ -15,8 +15,8 @@ body {
 #foodImage {
     border: 2px solid black;
     border-radius: 5px;
-    width: 400px;
-    height: 300px;
+    width: 600px;
+    height: 420px;
     aspect-ratio: 1 / 0.7;
     object-fit: cover;
 }
