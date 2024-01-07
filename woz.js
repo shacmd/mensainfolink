@@ -72,17 +72,6 @@ request.onreadystatechange = function() {
     }
 };
 
-function getCheckedRadio(name) {
-    var options = document.getElementsByName(name);
-    for (i = 0; i < options.length; i++) {
-        var option = options[i];
-        if (option.checked) {
-            return option.value;
-        }
-    }
-    return null;
-}
-
 function set(name) {
     console.log("set::name = " + name);
     console.log("set::GET = " + dburl + name);

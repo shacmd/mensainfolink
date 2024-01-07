@@ -24,13 +24,15 @@ export function startSecondUser(seconds) {
         if (seconds < 0) {
             clearInterval(timer);
             closePopup();
-            toggleSecondUser(false);
+            stopSecondUser();
         }
     }, 1000);
 }
 
+import { sendStopSecondUser } from './wozListener.js';
 export function stopSecondUser() {
     if(!secondUser) return;
+    sendStopSecondUser();
     clearInterval(timer);
     toggleSecondUser(false);
 }
