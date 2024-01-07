@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WoZ</title>
+<script type="text/javascript" src="woz.js"></script>
+</head>
+<body>
+
+<h1>Student Input Interface</h1>
+
+<form>
+  <input type="button" value="Create DB" id="create" onclick="createDB();"><br/>
+</form> 
+
+<br/>
+
+<form style="display: flex; align-items: center; gap: 5px;">
+  <label for="checkBoxSecondUser">Second user?</label>
+  <input type="checkbox" id="checkBoxSecondUser">
+  <input type="button" value="Send" id="secondUser" onclick="set('secondUser')">
+</form>
+
+</body>
+</html>

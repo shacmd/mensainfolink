@@ -7,21 +7,36 @@ let preferredMealsList = [];
 let language = "german";
 let secondUser = true;
 
-function startSecondUser(seconds) {
+let timer;
+
+function updateTimerText(seconds) {
+    let timerText = language === 'german' ? ' Sekunden verbleibend' : ' seconds remaining';
+    document.getElementById('timer').textContent = seconds + timerText;
+}
+
+export function startSecondUser(seconds) {
+    if(secondUser) return;
+    updateTimerText(seconds);
     toggleSecondUser(true);
-    const timerInterval = setInterval(function() {
-        let timerText = language === 'german' ? ' Sekunden verbleibend' : ' seconds remaining';
-        document.getElementById('timer').textContent = seconds + timerText;
+    timer = setInterval(function() {
         seconds--;
+        updateTimerText(seconds)
         if (seconds < 0) {
-            clearInterval(timerInterval);
+            clearInterval(timer);
             closePopup();
             toggleSecondUser(false);
         }
     }, 1000);
 }
 
+export function stopSecondUser() {
+    if(!secondUser) return;
+    clearInterval(timer);
+    toggleSecondUser(false);
+}
+
 function toggleSecondUser(status) {
+    if(status === secondUser) return;
     secondUser = status;
     const secondUserElement = document.getElementById('secondUser');
     const separatorElement = document.querySelector('.separator');
@@ -72,7 +87,6 @@ window.onload = function() {
     toggleSecondUser(false);
     updateDishes();
     handleLanguageChange();
-    startSecondUser(60)
     document.getElementById("btn_monday").style.border = "2px solid green";
 
     let languageSelect = document.getElementById("language");
