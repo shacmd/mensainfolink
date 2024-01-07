@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f2;
+    background-color: #f8f8f8;
     font-family: Arial, sans-serif;
 }
 
@@ -13,7 +13,9 @@ body {
 }
 
 #foodImage {
-    width: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 400px;
     height: 300px;
     aspect-ratio: 1 / 0.7;
     object-fit: cover;
@@ -25,31 +27,56 @@ body {
 
 button {
     margin: 0 10px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 20px 20px;
+    background-color: white;
     cursor: pointer;
 }
 
 .liked {
     background: green;
-    color: white;
+}
+
+.neutral {
+    background: white;
 }
 
 .disliked {
     background: red;
-    color: white;
 }
 
 #foodInfo {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
     border-collapse: collapse;
 }
 
 #foodInfo td, #foodInfo th {
-    border: 1px solid #ddd;
+    border: 2px solid black;
     padding: 8px;
 }
 
 #foodInfo tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #bbbbbb5b;
+}
+
+#likeButton {
+    background: url("/icons/like.png") center no-repeat;
+    background-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+#dislikeButton {
+    background: url("/icons/dislike.png") center no-repeat;
+    background-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
