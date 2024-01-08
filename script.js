@@ -24,7 +24,7 @@ export function startSecondUser(seconds) {
         updateTimerText(seconds)
         if (seconds < 0) {
             clearInterval(timer);
-            closePopup();
+            closePopup(true);
             stopSecondUser();
         }
     }, 1000);
@@ -48,7 +48,9 @@ function toggleSecondUser(status) {
     const timeElement = document.getElementById('timer');
     const popupElement = document.getElementById('popup');
     const filterElement = document.getElementById('filter');
-    timeElement.style.display = status ? "Flex" : "None";
+    if(timeElement) {
+        timeElement.style.display = status ? "Flex" : "None";
+    }
     secondUserElement.hidden = !status;
     separatorElement.hidden = !status;
     headElement.style.maxWidth = status ? "50%" : "100%";
@@ -102,12 +104,14 @@ window.onload = function() {
     languageSelect.addEventListener("change", handleLanguageChange);
 
     document.getElementById("sorting").addEventListener("change", updateDishes);
-    document.getElementById("back").addEventListener("click", closePopup);
+    document.getElementById("back").addEventListener("click", function () {
+        closePopup(false);
+    });
     document.getElementById("filter").addEventListener('click', function () {
-        openPopup("filter");
+        openPopup("filter", false, null);
     });
     document.getElementById("weekOverview").addEventListener('click', function () {
-        openPopup("week");
+        openPopup("week", false, null);
     });
 
     // Event-Listener für jeden Button hinzufügen
@@ -224,7 +228,7 @@ function insertMealsToMenu(meals, menu) {
         }
         currentDish.addEventListener('click', function () {
             localStorage.setItem("selectedFood", id);
-            openPopup("dish");
+            openPopup("dish", false, null);
         });
     }
 }
@@ -301,26 +305,45 @@ function resetWeekButtonBorders() {
     }
 }
 
-function openPopup(popup) {
-    let languageSelect = document.getElementById("language");
-    let timeElement = document.getElementById("timer");
-    let popupHeadRightElement = document.getElementById('popupHeadRight');
-    popupHeadRightElement.appendChild(timeElement);
-    popupHeadRightElement.appendChild(languageSelect);
-
-
+function openPopup(popup, alreadyOpened, backTo) {
+    backToView = backTo;
+    if(!alreadyOpened) {
+        let languageSelect = document.getElementById("language");
+        let timeElement = document.getElementById("timer");
+        let popupHeadRightElement = document.getElementById('popupHeadRight');
+        popupHeadRightElement.appendChild(timeElement);
+        popupHeadRightElement.appendChild(languageSelect);
+    }
     let popupContent = document.getElementById("popupContent");
+
     if(popup === "dish") {
         popupContent.innerHTML = `<iframe src="dishView/dishView.html" id="popupIframe"></iframe>`;
     } else if(popup === "filter") {
         popupContent.innerHTML = `<iframe src="filterView/filter.html" id="popupIframe"></iframe>`;
     } else if(popup === "week") {
         popupContent.innerHTML = `<iframe src="weekView/weekView.html" id="popupIframe"></iframe>`;
+        let iframe = document.getElementById('popupIframe');
+        window.addEventListener('message', function (event) {
+            let messageData = event.data;
+            console.log('Received message from iframe:', data);
+
+            if (messageData.event === 'iframeMessage') {
+                console.log('Received iframeMessage event with data:', data);
+                openPopup(messageData.popup, messageData.alreadyOpened, messageData.backTo);
+            }
+        });
     }
     document.getElementById('popup').style.display = 'block';
+    onWindowResize();
 }
 
-function closePopup() {
+let backToView = null;
+function closePopup(force) {
+    if(backToView != null && !force) {
+        openPopup(backToView, false, null);
+        return;
+    }
+    backToView = null;
     updateDishes();
     let languageSelect = document.getElementById("language");
     let sortingElement = document.getElementById("sorting");
@@ -329,4 +352,5 @@ function closePopup() {
     mainOptionsElement.appendChild(languageSelect);
     mainOptionsElement.insertBefore(timeElement, sortingElement);
     document.getElementById('popup').style.display = 'none';
+    onWindowResize();
 }

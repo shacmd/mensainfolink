@@ -1,17 +1,9 @@
 html, body {
-    margin: 25px 0 0;
+    margin: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
-}
-
-.container {
-
-}
-
-table {
-
 }
 
 #weekly-menu {
@@ -29,9 +21,17 @@ table {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
+#weekly-menu tr {
+    width: 100%;
+}
+
+
 #weekly-menu td {
+    position: relative;
+    top: 50px;
     padding: 12px;
     vertical-align: top;
+    overflow-y: auto;
 }
 
 #weekly-menu td img {
@@ -54,8 +54,19 @@ table {
 
 #weekly-menu img {
     max-width: 100%;
-    min-height: 50px;
     border-bottom: 2px solid black;
+}
+
+thead {
+    position: sticky;
+    top: 50px;
+    background-color: white;
+    z-index: 100;
+}
+
+table {
+
+
 }
 
 .dish {
