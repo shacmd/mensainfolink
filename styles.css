@@ -232,6 +232,22 @@ select {
     cursor: pointer;
 }
 
+.tutorial {
+
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background: white url("/icons/questionmark.png") bottom 5px center no-repeat;
+    background-size: 40px;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+}
+
 #popup {
     display: none;
     box-sizing: border-box;

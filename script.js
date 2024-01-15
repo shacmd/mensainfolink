@@ -48,6 +48,7 @@ function toggleSecondUser(status) {
     const timeElement = document.getElementById('timer');
     const popupElement = document.getElementById('popup');
     const filterElement = document.getElementById('filter');
+    const tutorialElement = document.getElementById('tutorial');
     if(timeElement) {
         timeElement.style.display = status ? "Flex" : "None";
     }
@@ -57,6 +58,7 @@ function toggleSecondUser(status) {
     headPopupElement.style.maxWidth = status ? "50%" : "100%";
     popupElement.style.maxWidth = status ? "50%" : "100%";
     filterElement.style.marginRight = status ? "20px" : "10px";
+    tutorialElement.style.marginRight = status ? "20px" : "10px";
     updateDishes();
     onWindowResize();
 }
@@ -109,6 +111,9 @@ window.onload = function() {
     });
     document.getElementById("filter").addEventListener('click', function () {
         openPopup("filter", false, null);
+    });
+    document.getElementById("tutorial").addEventListener('click', function () {
+        openPopup("tutorial", false, null);
     });
     document.getElementById("weekOverview").addEventListener('click', function () {
         openPopup("week", false, null);
@@ -347,6 +352,8 @@ function openPopup(popup, alreadyOpened, backTo) {
         popupContent.innerHTML = `<iframe src="dishView/dishView.html" id="popupIframe"></iframe>`;
     } else if(popup === "filter") {
         popupContent.innerHTML = `<iframe src="filterView/filter.html" id="popupIframe"></iframe>`;
+    } else if(popup === "tutorial") {
+        popupContent.innerHTML = `<iframe src="tutorial/tutorial.html" id="popupIframe"></iframe>`;
     } else if(popup === "week") {
         popupContent.innerHTML = `<iframe src="weekView/weekView.html" id="popupIframe"></iframe>`;
         let iframe = document.getElementById('popupIframe');
