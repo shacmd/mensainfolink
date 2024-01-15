@@ -1,8 +1,8 @@
 import * as data from "../data.js";
 
-window.onload = function() {
+window.onload = function () {
     let language = localStorage.getItem("language");
-    if(language === null) language = "german";
+    if (language === null) language = "german";
 
     const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     const weekdaysGerman = { 'Monday': 'Montag', 'Tuesday': 'Dienstag', 'Wednesday': 'Mittwoch', 'Thursday': 'Donnerstag', 'Friday': 'Freitag' };
@@ -12,19 +12,15 @@ window.onload = function() {
     let row = document.createElement('tr');
     tbody.appendChild(row);
 
-    // append the dishes for each day
     weekdays.forEach((day, index) => {
-
-
         let cell = document.createElement('td');
         row.appendChild(cell);
 
         for (let i = 0; i < data[`foodOn${day}`].length; i++) {
-            let id = data[`foodOn${day}`][i];
-            let dish = data.foodItems[id];
+            let dishId = data[`foodOn${day}`][i];
+            let dish = data.foodItems[dishId];
 
             if (dish) {
-                // Erstelle eine div-Klasse mit dem Namen "dish" für jedes Bild-Link-Paar
                 let dishDiv = document.createElement('div');
                 dishDiv.classList.add('dish');
 
@@ -36,16 +32,42 @@ window.onload = function() {
                 img.alt = p.textContent;
                 dishDiv.appendChild(img);
 
-                if(language !== "only-pictures") {
+                // New div for icon symbols
+                let iconDiv = document.createElement('div');
+                iconDiv.classList.add('icon-symbols');
+
+                // Add icon symbols based on dish properties
+                if (dish.tags.includes(data.Tag.Meat)) {
+                    iconDiv.innerHTML += '<img src="/icons/meat.png" class="symbol" title="Contains meat" />';
+                }
+                if (dish.tags.includes(data.Tag.Vegan)) {
+                    iconDiv.innerHTML += '<img src="/icons/vegan.png" class="symbol" title="Vegan" />';
+                }
+                if (dish.tags.includes(data.Tag.Vegetarian)) {
+                    iconDiv.innerHTML += '<img src="/icons/vegetarian.png" class="symbol" title="Vegetarian" />';
+                }
+                if (dish.tags.includes(data.Tag.Milk)) {
+                    iconDiv.innerHTML += '<img src="/icons/milk.png" class="symbol" title="Contains milk" />';
+                }
+                if (dish.tags.includes(data.Tag.Wheat)) {
+                    iconDiv.innerHTML += '<img src="/icons/wheat.png" class="symbol" title="Contains wheat" />';
+                }
+                if(dish.tags.includes(data.Tag.Fish)){
+                    iconDiv.innerHTML+= '<img src="/icons/fish.png" class="symbol" title="Contain fish" />'
+                }
+
+                dishDiv.appendChild(iconDiv);
+
+                if (language !== "only-pictures") {
                     dishDiv.appendChild(p);
                 } else {
                     img.style.border = "0px solid white";
                 }
-                // Füge die dish-Klasse zur Zelle hinzu
+
                 cell.appendChild(dishDiv);
 
                 dishDiv.addEventListener("click", function () {
-                    localStorage.setItem("selectedFood", id);
+                    localStorage.setItem("selectedFood", dish.name_en); 
                     var messageData = {
                         event: 'iframeMessage',
                         popup: "dish",
