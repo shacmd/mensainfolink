@@ -75,6 +75,25 @@ body {
     border: 2px solid black;
 }
 
+.activeFilters {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.activeFilters > img {
+    width: 3em;
+}
+
+.activeFilters > span {
+    font-weight: bold;
+    font-size: 20px;
+    padding-right: 5px;
+}
+
 .nextWeek {
     border-left: 2px solid black;
 }
@@ -197,9 +216,7 @@ select {
 }
 
 .filter {
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-left: auto;
+
     display: flex;
     justify-content: center;
     font-weight: bold;
@@ -247,4 +264,23 @@ select {
     background-size: 35px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.strikethrough {
+    position: relative;
+}
+.strikethrough:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 1px solid;
+    border-color: inherit;
+
+    -webkit-transform:rotate(-5deg);
+    -moz-transform:rotate(-5deg);
+    -ms-transform:rotate(-5deg);
+    -o-transform:rotate(-5deg);
+    transform:rotate(-5deg);
 }
