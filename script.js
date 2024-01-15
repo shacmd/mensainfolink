@@ -122,6 +122,7 @@ window.onload = function() {
     addWeekButtonClickListener("btn_friday", data.foodOnFriday);
     addWeekButtonClickListener("btn_saturday", data.foodOnSaturday);
     addWeekButtonClickListener("btn_mondayNextWeek", data.foodOnMondayNextWeek);
+    updateActiveFilters();
 };
 
 // Funktion zum Aktualisieren der Gerichte
@@ -231,6 +232,30 @@ function insertMealsToMenu(meals, menu, secondUser) {
                 localStorage.setItem("selectedFood", id);
                 openPopup("dish", false, null);
             });
+        }
+    }
+}
+
+function updateActiveFilters() {
+    let activeFiltersElement = document.querySelector('.activeFilters');
+    activeFiltersElement.style.display = (disabledTags.length === 0) ? "None" : "Flex";
+
+    let filterImagesElement = document.getElementById("filters");
+    filterImagesElement.innerHTML = "";
+
+    for(let tag of disabledTags) {
+        if(tag === data.Tag.Meat) {
+            filterImagesElement.innerHTML += `<img src="./icons/ban-meat.png" alt="">`
+        } else if(tag === data.Tag.Wheat) {
+            filterImagesElement.innerHTML += `<img src="./icons/ban-wheat.png" alt="">`
+        } else if(tag === data.Tag.Milk) {
+            filterImagesElement.innerHTML += `<img src="./icons/ban-milk.png" alt="">`
+        } else if(tag === data.Tag.Fish) {
+            filterImagesElement.innerHTML += `<img src="./icons/ban-fish.png" alt="">`
+        } else if(tag === data.Tag.Vegan) {
+            filterImagesElement.innerHTML += `<img src="./icons/ban-vegan.png" alt="">`
+        } else if(tag === data.Tag.Vegetarian) {
+            filterImagesElement.innerHTML += `<img src="./icons/ban-vegetarian.png" alt="">`
         }
     }
 }
@@ -355,4 +380,5 @@ function closePopup(force) {
     mainOptionsElement.insertBefore(timeElement, sortingElement);
     document.getElementById('popup').style.display = 'none';
     onWindowResize();
+    updateActiveFilters();
 }

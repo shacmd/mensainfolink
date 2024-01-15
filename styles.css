@@ -78,14 +78,15 @@ body {
 .activeFilters {
     border: 2px solid black;
     border-radius: 5px;
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.activeFilters > img {
+.filter-icons > img {
     width: 3em;
+    padding-right: 5px;
 }
 
 .activeFilters > span {
@@ -264,23 +265,4 @@ select {
     background-size: 35px;
     padding-left: 20px;
     padding-right: 20px;
-}
-
-.strikethrough {
-    position: relative;
-}
-.strikethrough:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 50%;
-    right: 0;
-    border-top: 1px solid;
-    border-color: inherit;
-
-    -webkit-transform:rotate(-5deg);
-    -moz-transform:rotate(-5deg);
-    -ms-transform:rotate(-5deg);
-    -o-transform:rotate(-5deg);
-    transform:rotate(-5deg);
 }
