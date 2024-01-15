@@ -96,7 +96,7 @@ button {
     font-weight: bold;
     background-color: white;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .time {
@@ -118,8 +118,8 @@ button {
 select {
     box-sizing: border-box;
     font-weight: bold;
-    padding: 5px;
-    font-size: 16px;
+    padding: 5px 10px 5px 5px;
+    font-size: 20px;
     height: 100%;
     width: 100%;
     border: 2px solid black;
@@ -129,8 +129,8 @@ select {
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 22px;
-    min-width: 135px;
-    min-height: 50px;
+    min-width: 145px;
+    min-height: 60px;
     cursor: pointer;
 }
 
