@@ -64,10 +64,7 @@ thead {
     z-index: 100;
 }
 
-table {
-
-
-}
+table {}
 
 .dish {
     min-height: 20%;
@@ -80,4 +77,22 @@ table {
     margin-bottom: 10px;
     border: 2px solid black;
     border-radius: 2px;
+}
+.icon-symbols {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    width: 10px; 
+    height: 18px; 
+    margin: 0 5px;
+}
+
+.symbol {
+    width: 35px; 
+    height: 35px; 
+    font-size: 40px; 
+    margin-bottom: 5px;
+    display: block; 
 }
