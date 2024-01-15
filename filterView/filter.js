@@ -4,6 +4,7 @@ let disabledFilters = [];
 
 
 window.onload = function() {
+
     let language = localStorage.getItem("language");
     if(language === null) language = "german";
 
@@ -17,23 +18,24 @@ window.onload = function() {
     let filterWheatElement = document.getElementById(data.Tag.Wheat);
     let filterFishElement = document.getElementById(data.Tag.Fish);
     let filterResetElement = document.getElementById("reset");
-    if(language === "german") {
-        filterMeatElement.innerHTML = "Fleisch";
-        filterVegetarianElement.innerHTML = "Vegetarisch";
-        filterVeganElement.innerHTML = "Vegan";
-        filterMilkElement.innerHTML = "Milch";
-        filterWheatElement.innerHTML = "Weizen";
-        filterFishElement.innerHTML = "Fisch";
-        filterResetElement.innerHTML = "Filter zurücksetzen";
+    if (language === "german") {
+        document.getElementById("meat").querySelector(".text-content").textContent = "Fleisch";
+        document.getElementById("vegetarian").querySelector(".text-content").textContent = "Vegetarisch";
+        document.getElementById("vegan").querySelector(".text-content").textContent = "Vegan";
+        document.getElementById("milk").querySelector(".text-content").textContent = "Milch";
+        document.getElementById("wheat").querySelector(".text-content").textContent = "Weizen";
+        document.getElementById("fisch").querySelector(".text-content").textContent = "Fisch";
+        filterResetElement.textContent = "Filter zurücksetzen";
     } else {
-        filterMeatElement.innerHTML = "Meat";
-        filterVegetarianElement.innerHTML = "Vegetarian";
-        filterVeganElement.innerHTML = "Vegan";
-        filterMilkElement.innerHTML = "Milk Products";
-        filterWheatElement.innerHTML = "Wheat";
-        filterFishElement.innerHTML = "Fish";
-        filterResetElement.innerHTML = "Reset filters";
+        document.getElementById("meat").querySelector(".text-content").textContent = "Meat";
+        document.getElementById("vegetarian").querySelector(".text-content").textContent = "Vegetarian";
+        document.getElementById("vegan").querySelector(".text-content").textContent = "Vegan";
+        document.getElementById("milk").querySelector(".text-content").textContent = "Milk Products";
+        document.getElementById("wheat").querySelector(".text-content").textContent = "Wheat";
+        document.getElementById("fisch").querySelector(".text-content").textContent = "Fish";
+        filterResetElement.textContent = "Reset filters";
     }
+
     initFilters();
     filterResetElement.addEventListener("click", function () {
        resetFilters();

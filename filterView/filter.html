@@ -9,25 +9,36 @@
 <body>
 <div class="filter-container">
     <div class="filter-line">
-        <button class="filter-btn large" id="meat">Fleisch</button>
-        <button class="filter-btn large" id="vegetarian">Vegetarisch</button>
-        <button class="filter-btn large" id="vegan">Vegan</button>
+        <button class="filter-btn large with-icon" id="meat">
+            <img src="../icons/meat.png" alt="">
+            <span class="text-content">Fleisch</span>
+        </button>
+        <button class="filter-btn large with-icon" id="vegetarian">
+            <img src="../icons/vegetarian.png" alt="">
+            <span class="text-content">Vegetarisch</span>
+        </button>
+        <button class="filter-btn large with-icon" id="vegan">
+            <img src="../icons/vegan.png" alt="">
+            <span class="text-content">Vegan</span>
+        </button>
     </div>
     <div class="filter-line">
-        <button class="filter-btn" id="wheat">Weizen</button>
-        <button class="filter-btn" id="milk">Milk Produkt</button>
-        <button class="filter-btn" id="fisch">Fisch</button>
+        <button class="filter-btn with-icon" id="wheat">
+            <img src="../icons/wheat.png" alt="">
+            <span class="text-content">Weizen</span>
+        </button>
+        <button class="filter-btn with-icon" id="milk">
+            <img src="../icons/milk.png" alt="">
+            <span class="text-content">Milk Produkt</span>
+        </button>
+        <button class="filter-btn with-icon" id="fisch">
+            <img src="../icons/fish.png" alt="">
+            <span class="text-content">Fisch</span>
+        </button>
     </div>
     <button class="reset-btn" id="reset">Reset Filters</button>
 </div>
 
-<div id="content">
-    <div class="content-item fleisch vegan">Dish with meat and vegan ingredients</div>
-    <div class="content-item vegetarisch weizen">Vegetarian dish with wheat</div>
-    <div class="content-item vegan milkproduct">Vegan dish with milk product</div>
-    <div class="content-item fisch">Fish dish</div>
-    <div class="content-item fleisch weizen fisch">Dish with meat, wheat, and fish</div>
-</div>
 <script type="module" src="filter.js"></script>
 </body>
 </html>
