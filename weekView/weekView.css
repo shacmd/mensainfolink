@@ -81,6 +81,7 @@ table {}
 .icon-symbols {
     display: flex;
     justify-content: center;
+    scale: 0.70;
 }
 
 .icon {

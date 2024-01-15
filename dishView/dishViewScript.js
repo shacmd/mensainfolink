@@ -26,6 +26,29 @@ window.onload = function() {
         addRow(table, "Protein", foodItem.protein + "g");
     }
 
+    let iconDiv = document.createElement('div');
+    iconDiv.classList.add('icon-symbols');
+    if (foodItem.tags.includes(data.Tag.Meat)) {
+        iconDiv.innerHTML += '<img src="/icons/meat.png" class="symbol" title="Contains meat" />';
+    }
+    if (foodItem.tags.includes(data.Tag.Vegan)) {
+        iconDiv.innerHTML += '<img src="/icons/vegan.png" class="symbol" title="Vegan" />';
+    }
+    if (foodItem.tags.includes(data.Tag.Vegetarian)) {
+        iconDiv.innerHTML += '<img src="/icons/vegetarian.png" class="symbol" title="Vegetarian" />';
+    }
+    if (foodItem.tags.includes(data.Tag.Milk)) {
+        iconDiv.innerHTML += '<img src="/icons/milk.png" class="symbol" title="Contains milk" />';
+    }
+    if (foodItem.tags.includes(data.Tag.Wheat)) {
+        iconDiv.innerHTML += '<img src="/icons/wheat.png" class="symbol" title="Contains wheat" />';
+    }
+    if(foodItem.tags.includes(data.Tag.Fish)){
+        iconDiv.innerHTML+= '<img src="/icons/fish.png" class="symbol" title="Contain fish" />'
+    }
+    table.appendChild(iconDiv);
+    
+
     let imageElement = document.getElementById("foodImage");
     imageElement.src = foodItem.image;
 

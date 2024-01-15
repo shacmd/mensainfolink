@@ -10,10 +10,12 @@ body {
 
 .container {
     text-align: center;
+    position: relative;
 }
 
 #foodImage {
     border: 2px solid black;
+    position: relative;
     border-radius: 5px;
     width: 600px;
     height: 420px;
@@ -71,6 +73,7 @@ button {
     background-size: 30px;
     padding-left: 20px;
     padding-right: 20px;
+    position: relative;
 }
 
 #dislikeButton {
@@ -78,4 +81,27 @@ button {
     background-size: 30px;
     padding-left: 20px;
     padding-right: 20px;
+    position: relative;
+}
+
+.icon-symbols {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    width: 10px; 
+    height: 18px; 
+    margin: 0 5px;
+}
+
+.symbol {
+    width: 35px; 
+    height: 35px; 
+    font-size: 40px; 
+    margin-bottom: 5px;
+    display: block; 
 }
