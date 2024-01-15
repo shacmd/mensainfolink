@@ -162,10 +162,10 @@ function updateDishes() {
     currentShownMealsSorted = currentShownMealsSorted.filter(item => !mealsOfTodayAndPreferred.includes(item));
     title_otherMeals.hidden = currentShownMealsSorted.length === 0;
 
-    insertMealsToMenu(mealsOfTodayAndPreferred, preferredMeals);
-    insertMealsToMenu(currentShownMealsSorted, otherMeals);
+    insertMealsToMenu(mealsOfTodayAndPreferred, preferredMeals, false);
+    insertMealsToMenu(currentShownMealsSorted, otherMeals, false);
     if(secondUser) {
-        insertMealsToMenu(currentDayMeals, mealsToday);
+        insertMealsToMenu(currentDayMeals, mealsToday, true);
     }
 }
 
@@ -204,7 +204,7 @@ function sortMeals(meals, sortBy) {
     return sortOrder;
 }
 
-function insertMealsToMenu(meals, menu) {
+function insertMealsToMenu(meals, menu, secondUser) {
     for (let id of meals) {
         let foodItem = data.foodItems[id];
         let description = language === "german" ? foodItem.description_de : foodItem.description_en;
@@ -226,10 +226,12 @@ function insertMealsToMenu(meals, menu) {
         if(language !== "only-pictures") {
             currentDish.innerHTML += dishDescriptionHtml;
         }
-        currentDish.addEventListener('click', function () {
-            localStorage.setItem("selectedFood", id);
-            openPopup("dish", false, null);
-        });
+        if(!secondUser) {
+            currentDish.addEventListener('click', function () {
+                localStorage.setItem("selectedFood", id);
+                openPopup("dish", false, null);
+            });
+        }
     }
 }
 
@@ -277,7 +279,7 @@ function handleLanguageChange() {
     onWindowResize();
 }
 
-// Funktion zum Hinzufügen von Event-Listenern für die Week Buttons
+// Funktion zum Hinzufügen von Event-Listener für die Week Buttons
 function addWeekButtonClickListener(buttonId, foodData) {
     const button = document.getElementById(buttonId);
 
